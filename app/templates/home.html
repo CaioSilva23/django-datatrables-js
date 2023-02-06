@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load filtros %}
+
+{% block navbar-conteudo %}
+<i style='color: #fff;' class='fas fa-user-alt'></i>
+CAIO SILVA
+{% endblock navbar-conteudo %}
+
+{% block conteudo %}
+
+<div class="container">
+    <br><br><br>
+
+    <table class='table table-bordered' id='example' style='text-align: center;'>
+        <thead class='table-success' >
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Profissão</th>
+                <th>Salário</th>
+                <th>Sexo</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <!--DATA FROM BACKEND-->
+            {% for pessoa in pessoas %}
+            <tr>
+                <td>{{pessoa.id}}</td>
+                <td>{{pessoa.nome}}</td>
+                <td>{{pessoa.email}}</td>
+                <td>{{pessoa.profissao}}</td>
+                <td>{{pessoa.salario|formata_preco}}</td>
+                <td>{{pessoa.get_sexo_display}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<br><br><br><br>
+{% endblock conteudo %}
