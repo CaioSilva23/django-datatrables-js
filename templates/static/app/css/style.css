@@ -17,3 +17,25 @@ body{
 .push{
     height: 50px;
 }
+
+/* DATA TABLES*/
+
+/* PAGINAÇÃO*/
+.dataTables_paginate{
+    margin-top: -30px !important;
+}
+
+
+.dataTables_filter{
+    display: none;    
+}
+
+.dataTables_length{
+    float: right !important;
+    margin-top: 10px !important;
+}
+
+.dt-buttons{
+    margin-bottom: 10px !important;
+}
+

@@ -1,16 +1,12 @@
 {% extends 'base.html' %}
 {% load filtros %}
 
-{% block navbar-conteudo %}
-<i style='color: #fff;' class='fas fa-user-alt'></i>
-CAIO SILVA
-{% endblock navbar-conteudo %}
+
 
 {% block conteudo %}
 
 <div class="container">
     <br><br><br>
-
     <table class='table table-bordered' id='example' style='text-align: center;'>
         <thead class='table-success' >
             <tr>
@@ -20,6 +16,7 @@ CAIO SILVA
                 <th>Profissão</th>
                 <th>Salário</th>
                 <th>Sexo</th>
+                <th>Ações</th>
 
             </tr>
         </thead>
@@ -34,6 +31,11 @@ CAIO SILVA
                 <td>{{pessoa.profissao}}</td>
                 <td>{{pessoa.salario|formata_preco}}</td>
                 <td>{{pessoa.get_sexo_display}}</td>
+                <td>
+                    <a href="{% url 'editar' pessoa.id%}"><i class="fas fa-edit"></i></a>
+    
+                    <a href="{% url 'remover' pessoa.id%}"  style='color: red;'><i class="fas fa-trash"></i></a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>

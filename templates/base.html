@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,9 +15,13 @@
     <!--CSS STATIC-->  
     <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
     
-    <!--Datatables CSS-->
+    <!--Datatables CSS TABELA SIMPLES 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
-    
+    -->
+
+    <!--Datatables CSS TABELA COMPLETA -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jq-3.6.0/jszip-2.5.0/dt-1.13.2/b-2.3.4/b-html5-2.3.4/b-print-2.3.4/datatables.min.css"/>
+
     <title>Datatables</title>
 </head>
 <body>
@@ -26,9 +30,19 @@
             <nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
                 <div class='col-sm'>
                     <a class='navbar-brand flex-grow-1' style='text-align: center; color: #fff; margin-left: 25px;'>
-                        {% block navbar-conteudo %}{% endblock navbar-conteudo %}
-
+                        <i style='color: #fff;' class='fas fa-user-alt'></i>
+                        CAIO SILVA
+                        <a style='color: #fff; text-decoration: none;' href="{% url 'home' %}" >LISTAR</a>
+                        <a style='color: #fff; text-decoration: none;' href="{% url 'cadastrar' %}" >CADASTRAR</a>
                     </a>
+                </div>
+                <!-- INPUT DE PESQUISA NAV BAR-->
+
+                <div class='d-flex' style='margin-right: 25px;'>
+                    <div class='input-group input-group-sm'>
+                        <input class='form-control' type="search" id='search' placeholder='Digite sua pesquisa...' aria-label='Search'>
+                        <a href="{% url 'home' %}" class='btn btn-secondary btn-sm'> <i class='fas fa-sync-alt'></i></a>
+                    </div>
                 </div>
             </nav>
         </header>
@@ -51,29 +65,18 @@
     <!--jquary-->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
    
-    <!--Datatables-->
+    <!--Datatables SIMPLES
     <script src='https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js'></script>
     <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
-
-    <script>
-        $('#example').DataTable({
-            paging: true, // pagination
-            pageLength: 10, //data per page
-            lengthChange: true, //show entries per page
-            autoWidth: true, // control the auto width on columns
-            searching: true, //campo de pesquisa 
-            bInfo: true, // info footer
-            bSort: true, // filtro A to Z and Z to A
+-->
+    <!--Datatables JS COMPLETO-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/jszip-2.5.0/dt-1.13.2/b-2.3.4/b-html5-2.3.4/b-print-2.3.4/datatables.min.js"></script>
+    
 
 
-            {% comment %} // Desabilitando o filtro das colunas
-            "columnDefs": [{
-                "targets": 5, // OU UM RANGE[4,5]
-                "orderable": false
-            }] {% endcomment %}
 
-        });
-       
-    </script>
+    <script src='{% static "app/js/js.js"%}'></script>
 </body>
 </html>
