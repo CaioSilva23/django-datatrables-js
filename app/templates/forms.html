@@ -4,15 +4,18 @@
 {% block conteudo %}
 
 <div class="container">
-    <br><br><br>
-    <div class="col-4">
 
-        <form method='POST'>{% csrf_token %}
-            {{form|crispy}}
-            <input type="submit" value="Enviar" class='btn btn-secondary'>
-        </form>
-
-    </div>
-   
+        <div class="col-4">
+            <div class='form'>
+                <div class="content">
+                    <h3>Formulário: </h3>
+                    <form method='POST'>{% csrf_token %}
+                        {{form|crispy}}
+                        <input type="submit" value="Enviar" class='btn btn-secondary'>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
 </div>
 {% endblock conteudo %}

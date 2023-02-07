@@ -4,13 +4,13 @@
 
 
 {% block conteudo %}
-
 <div class="container">
     <br><br><br>
+    
     <table class='table table-bordered' id='example' style='text-align: center;'>
-        <thead class='table-success' >
-            <tr>
-                <th>ID</th>
+        <thead class='table-secondary' >
+            <tr style='text-align: center;'>
+                <th>Ordem</th>
                 <th>Nome</th>
                 <th>Email</th>
                 <th>Profissão</th>
@@ -25,7 +25,7 @@
             <!--DATA FROM BACKEND-->
             {% for pessoa in pessoas %}
             <tr>
-                <td>{{pessoa.id}}</td>
+                <td>{{forloop.counter}}</td>
                 <td>{{pessoa.nome}}</td>
                 <td>{{pessoa.email}}</td>
                 <td>{{pessoa.profissao}}</td>

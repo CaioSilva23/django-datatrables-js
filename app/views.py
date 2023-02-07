@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Pessoa
 from .forms import FormPessoa
-#from django.contrib.messages import constants
+from django.contrib.messages import constants
 from django.contrib import messages
 
 def home(request):
@@ -17,16 +17,17 @@ def cadastrar(request):
         form = FormPessoa(request.POST or None)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Cadastro realizado com sucesso!')
-            return redirect('home')
+            messages.add_message(request,constants.SUCCESS ,'Cadastro realizado com sucesso!')
+            return redirect('.')
 
 def remover(request, id):
     try:
         pessoa = get_object_or_404(Pessoa, id=id)
         pessoa.delete()
+        messages.add_message(request,constants.SUCCESS, f'{pessoa} removido(a) com sucesso!')
         return redirect('home')
     except Exception as e:
-        messages.error(request, 'Erro ao excluir esta pessoa!')
+        messages.add_message(request,constants.ERROR, 'Erro ao excluir esta pessoa!')
         return redirect('home')
 
 def editar(request, id):

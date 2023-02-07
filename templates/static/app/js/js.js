@@ -51,7 +51,7 @@ $('#example').DataTable({
                 },
                 // font da impressão 
                 customize: function(win){
-                    $(win.document.body).css('font-size','10pt')
+                    $(win.document.body).css('font-size','8pt')
                     $(win.document.body).find('table')
                     .addClass('compact')
                     .css('font-size', 'inherit');
@@ -76,7 +76,7 @@ $('#example').DataTable({
                     doc.styles.tableHeader.alignment = 'center';
                     doc.styles.tableBodyOdd.alignment = 'center';
                     doc.styles.tableBodyEven.alignment = 'center';
-                    doc.styles.tableHeader.fontSize = 7;
+                    doc.styles.tableHeader.fontSize = 9;
                     doc.defaultStyle.fontSize = 6;
                     doc.content[1].table.widths = Array(doc.content[1].table.body[1].length + 1 ).join('*').split('');
                 }       
@@ -89,3 +89,15 @@ var newSearch = $("#example").DataTable();
 $('#search').keyup(function(){
     newSearch.search($(this).val()).draw();
 }) 
+
+
+$(document).ready(function() {
+    // Abrir a modal e fechar
+    loading();
+  
+    function loading() {
+        setTimeout(function() {
+            $('.message').fadeOut(500);
+        }, 3000);
+    };
+  })
